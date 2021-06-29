@@ -1,0 +1,13 @@
+:root {
+  --primary-color: #116466;
+  --dark-color: #2c3531;
+  --light-color: #d1e8e2;
+  --contrast-color: #ffcb9a;
+  --contrast2-color: #d9b08c;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
+.nav-wrapper {
+  background-color: var(--primary-color);
+}
