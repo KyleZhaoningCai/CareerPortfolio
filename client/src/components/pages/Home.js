@@ -1,10 +1,13 @@
-import React, {Fragment} from 'react'
+import React from 'react';
+import ProfilePhoto from '../profile/ProfilePhoto';
+import ProfileInfo from '../profile/ProfileInfo';
 
 const Home = () => {
     return (
-        <Fragment>
-            
-        </Fragment>
+        <div className="row first-row">
+            <ProfilePhoto />
+            <ProfileInfo />
+        </div>
     )
 }
 

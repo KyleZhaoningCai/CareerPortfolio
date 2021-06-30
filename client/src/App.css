@@ -1,33 +1,42 @@
 :root {
-  --primary-color: #e98074;
-  --background-color: #eae7dc;
-  --dark-color: #8e8d8a;
-  --light-color: #eae7dc;
-  --contrast-color: #e85a4f;
-  --contrast2-color: #d8c3a5;
+  --primary-color: #b6666f;
+  --background-color: #e4c2c1;
+  --dark-color: #d1a080;
+  --light-color: #fef2f2;
+  --contrast-color: #f53163;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
-
+html {
+  font-size: 12px;
+}
 body {
-  background-color: var(--background-color);
   color: var(--primary-color);
+}
+.first-row {
+  padding-top: 30px;
+}
+.text-center {
+  text-align: center;
 }
 @media only screen and (max-width: 992px) {
   .hide-on-mobile {
     display: none;
   }
 }
+
 /* Navbar CSS */
 .nav-wrapper {
-  background-color: var(--contrast2-color);
+  background-color: var(--background-color);
 }
 .nav-wrapper a {
-  color: var(--dark-color);
+  color: var(--primary-color);
+}
+.nav-wrapper .hide-on-med-and-down a {
+  font-size: 1.5rem !important;
 }
 .brand-logo {
-  overflow: hidden;
-  text-overflow: clip;
+  font-size: 2.5rem !important;
 }
 .dropdown-content {
   position: relative;
@@ -48,4 +57,11 @@ body {
 /* Website CSS */
 .website-list li:nth-child(odd) {
   color: var(--primary-color);
+}
+
+/* ProfilePhoto CSS */
+.profile-photo {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
