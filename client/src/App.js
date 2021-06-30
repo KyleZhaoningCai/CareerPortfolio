@@ -5,6 +5,8 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 
 import Navbar from './components/layout/Navbar';
+import Home from './components/pages/Home';
+import Website from './components/pages/Website';
 
 const App = () => {
   useEffect(() => {
@@ -15,7 +17,10 @@ const App = () => {
       <Fragment>
         <Navbar />
         <div className="container">
-          
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/website' component={Website} />
+        </Switch>
         </div>
       </Fragment>
     </Router>

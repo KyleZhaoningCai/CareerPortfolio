@@ -1,13 +1,51 @@
 :root {
-  --primary-color: #116466;
-  --dark-color: #2c3531;
-  --light-color: #d1e8e2;
-  --contrast-color: #ffcb9a;
-  --contrast2-color: #d9b08c;
+  --primary-color: #e98074;
+  --background-color: #eae7dc;
+  --dark-color: #8e8d8a;
+  --light-color: #eae7dc;
+  --contrast-color: #e85a4f;
+  --contrast2-color: #d8c3a5;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
 
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+@media only screen and (max-width: 992px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+/* Navbar CSS */
 .nav-wrapper {
-  background-color: var(--primary-color);
+  background-color: var(--contrast2-color);
+}
+.nav-wrapper a {
+  color: var(--dark-color);
+}
+.brand-logo {
+  overflow: hidden;
+  text-overflow: clip;
+}
+.dropdown-content {
+  position: relative;
+  top: 0 !important;
+}
+.submenu li {
+  text-indent: 20px;
+}
+.sidenav {
+  width: 250px;
+}
+@media only screen and (min-width: 993px) {
+  .brand-logo {
+    padding-left: 20px !important;
+  }
+}
+
+/* Website CSS */
+.website-list li:nth-child(odd) {
+  color: var(--primary-color);
 }
