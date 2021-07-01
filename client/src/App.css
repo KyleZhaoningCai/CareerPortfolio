@@ -65,3 +65,13 @@ body {
   width: 100%;
   border-radius: 50%;
 }
+
+/* BattleCityTowerDefenseGame CSS */
+.tower-defense-container {
+  width: 400px;
+  height: 865px;
+}
+.tower-defense-game {
+  width: 100%;
+  height: 100%;
+}

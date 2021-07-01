@@ -7,6 +7,7 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Website from './components/pages/Website';
+import Game from './components/pages/Game';
 
 const App = () => {
   useEffect(() => {
@@ -18,8 +19,9 @@ const App = () => {
         <Navbar />
         <div className="container">
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/website' component={Website} />
+          <Route exact path='/'><Home /></Route>
+          <Route exact path='/website'><Website /></Route>
+          <Route path='/games'><Game /></Route>
         </Switch>
         </div>
       </Fragment>
