@@ -12,7 +12,7 @@ const Navbar = () => {
             </ul>
             <nav>
                 <div className="nav-wrapper">
-                    <Link to="/" className="brand-logo">Zhaoning(Kyle)<span className="hide-on-mobile"> Cai Portfolio</span></Link>
+                    <Link to="/" className="brand-logo">Zhaoning(Kyle)<span className="hide-on-med-and-down"> Cai Portfolio</span></Link>
                     <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
                         <li><Link to="/">Home</Link></li>
