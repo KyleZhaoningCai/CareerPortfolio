@@ -86,3 +86,15 @@ body {
   max-width: 100%;
   max-height: 100%;
 }
+
+/* TreasureHunterGame CSS */
+.treasure-hunter-container {
+  width: 1000px;
+  height: 625px;
+}
+
+/* JailbreakVideo CSS */
+.youtube-container iframe {
+  max-height: 100%;
+  max-width: 100%;
+}
