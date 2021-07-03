@@ -1,4 +1,5 @@
-import React, {Fragment} from 'react'
+import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 
 const Website = () => {
     return (
@@ -8,10 +9,10 @@ const Website = () => {
             <div className="section">
                 <ul className="website-list">
                     <li>
-                        <blockquote className="flow-text">This portfolio website was built with MERN (MongoDB, Express, React, Node) stack and Redux for state management </blockquote>
+                        <blockquote className="flow-text">This portfolio website was built with MERN (MongoDB, Express, React, Node) stack and Redux for state management. <Link exact to="/login">This is a simple To Do App to for demo purpose.</Link></blockquote>
                     </li>
                     <li>
-                        <blockquote className="flow-text"><a href="http://aifinancialtest.zhaoningcai.com/login">This web application</a> is a simple stock management app developed with Laravel</blockquote>
+                        <blockquote className="flow-text"><a href="http://aifinancialtest.zhaoningcai.com/login" target="_">This web application</a> is a simple stock management app developed with Laravel</blockquote>
                     </li>
                     <li>
                         <blockquote className="flow-text">I do not have access to the websites and web applications I developed for the companies I worked for, so I will have to describe them below:</blockquote>

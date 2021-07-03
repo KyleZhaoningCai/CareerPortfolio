@@ -8,6 +8,8 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Website from './components/pages/Website';
 import Game from './components/pages/Game';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 const App = () => {
   useEffect(() => {
@@ -22,6 +24,8 @@ const App = () => {
           <Route exact path='/'><Home /></Route>
           <Route exact path='/website'><Website /></Route>
           <Route path='/games'><Game /></Route>
+          <Route exact path='/login'><Login /></Route>
+          <Route exact path='/register'><Register /></Route>
         </Switch>
         </div>
       </Fragment>
