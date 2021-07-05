@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'; 
 import { setMessage } from '../../actions/messageActions';
@@ -7,7 +7,7 @@ import { login } from '../../actions/userActions';
 import MessageBox from '../layout/MessageBox';
 import Preloader from '../layout/Preloader';
 
-const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, login }, props) => {
+const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, login }) => {
 
     const [user, setUser] = useState({
         email: '',
@@ -16,12 +16,14 @@ const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, 
 
     const { email, password } = user; 
 
+    const history = useHistory();
+
     useEffect(() => {
-        if (isAuthenticated) {
-            props.history.push('/todo');
+        if (isAuthenticated) {            
+            history.push('/todo');
         }
         // eslint-disable-next-line
-    }, [isAuthenticated, props.history])
+    }, [isAuthenticated, history])
 
     const onChange = e => {
         if (type !== ''){
