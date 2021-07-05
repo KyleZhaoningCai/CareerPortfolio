@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register  } from '../../actions/userActions';
+import { setMessage } from '../../actions/messageActions';
+import MessageBox from '../layout/MessageBox';
+import Preloader from '../layout/Preloader';
 
-const Register = ({ register }) => {
+const Register = ({ message: {type}, user: {loading}, register, setMessage }) => {
 
     const [user, setUser] = useState({
         name: '',
@@ -16,6 +19,9 @@ const Register = ({ register }) => {
     const { name, email, password, password2 } = user; 
 
     const onChange = e => {
+        if (type !== ''){
+            setMessage('', '');
+        }
         setUser({
             ...user,
             [e.target.name]: e.target.value
@@ -25,9 +31,9 @@ const Register = ({ register }) => {
     const onSubmit = e => {
         e.preventDefault();
         if (name === '' || email === '' || password === ''){
-            // setAlert('Please enter all fields', 'danger');
+            setMessage('Please enter all fields', 'danger');
         }else if (password !== password2){
-            // setAlert('Passwords do not match', 'danger')
+            setMessage('Passwords do not match', 'danger')
         }else{
             register({
                 name,
@@ -59,6 +65,7 @@ const Register = ({ register }) => {
                     <label htmlFor='password2' className='form-label'>Confirm Password</label>
                     <input type='password' name='password2' value={password2} onChange={onChange} />
                 </div>
+                {loading ? <Preloader /> : <MessageBox />} 
                 <button type='submit' className='btn btn-primary register-button' >Register</button>
                 <Link exact to='/login' className='btn btn-primary back-to-login-button'>Back to Login</Link>
             </form>
@@ -67,7 +74,14 @@ const Register = ({ register }) => {
 }
 
 Register.propTypes = {
+    message: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
+    setMessage: PropTypes.func.isRequired,
 }
 
-export default connect(null, {register})(Register);
+const mapStateToProps = state => ({
+    message: state.message,
+    user: state.user
+})
+
+export default connect(mapStateToProps, {register, setMessage})(Register);

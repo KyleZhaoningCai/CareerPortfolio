@@ -1,13 +1,15 @@
 import { REGISTER_USER, SET_LOADING } from "../actions/types";
 const initialState = {
-
-    user: null,
     loading: false,
-    error: null
 }
 
 export default (state = initialState, action) => {
     switch(action.type) {
+        case REGISTER_USER:
+            return {
+                ...state,
+                loading: false
+            }
         case SET_LOADING: 
             return {
                 ...state,

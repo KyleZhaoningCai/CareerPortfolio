@@ -116,3 +116,9 @@ body {
 .back-to-login-button {
   margin-bottom: 15px;
 }
+
+/* Preloading CSS */
+.progress {
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
