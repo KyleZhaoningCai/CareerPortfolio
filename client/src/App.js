@@ -5,6 +5,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
+import setAuthToken from './utils/setAuthToken';
 
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
@@ -12,6 +13,10 @@ import Website from './components/pages/Website';
 import Game from './components/pages/Game';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+
+if (localStorage.token){
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   useEffect(() => {

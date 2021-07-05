@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import { setMessage } from '../../actions/messageActions';
 import MessageBox from '../layout/MessageBox';
 import Preloader from '../layout/Preloader';
 
-const Register = ({ message: {type}, user: {loading}, register, setMessage }) => {
+const Register = ({ message: {type}, user: {loading, isAuthenticated}, register, setMessage }, props) => {
 
     const [user, setUser] = useState({
         name: '',
@@ -17,6 +17,13 @@ const Register = ({ message: {type}, user: {loading}, register, setMessage }) =>
     });
 
     const { name, email, password, password2 } = user; 
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            props.history.push('/todo');
+        }
+        // eslint-disable-next-line
+    }, [isAuthenticated, props.history])
 
     const onChange = e => {
         if (type !== ''){
