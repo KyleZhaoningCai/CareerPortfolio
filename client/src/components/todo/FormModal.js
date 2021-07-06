@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Preloader from '../layout/Preloader';
+import MessageBox from '../layout/MessageBox';
 
 const FormModal = () => {
     return (
@@ -7,14 +9,20 @@ const FormModal = () => {
                 <h4>New To-do</h4>
                 <form>
                     <div className='input-field'>
-                        <label htmlFor='email' className='form-label'>Email Address</label>
-                        <input type='email' name='email' value={email} onChange={onChange} />
+                        <label htmlFor='email' className='form-label'>To-do Description</label>
+                        <input type='text' name='description' />
                     </div>
-                    <div className='input-field'>
-                        <label htmlFor='password' className='form-label'>Password</label>
-                        <input type='password' name='password' value={password} onChange={onChange} />
+                    <div className="input-field">
+                        <select name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>    
+                        </select>
+                        <label htmlFor='priority' className='form-label'>Priority Select</label>
                     </div>
-                    {loading ? <Preloader /> : <MessageBox />} 
+                    <input type="text" className="datepicker" name="date"></input>
+                    <label htmlFor='date' className='form-label'>Complete By</label>
+                    {true ? <Preloader /> : <MessageBox />} 
                     <button type='submit' className='btn btn-primary login-button' >Login</button>
                     <button class="modal-close btn">Cancel</button>
                 </form>
