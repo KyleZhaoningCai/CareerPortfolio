@@ -13,6 +13,7 @@ import Website from './components/pages/Website';
 import Game from './components/pages/Game';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import ToDo from './components/todo/ToDo';
 
 if (localStorage.token){
   setAuthToken(localStorage.token);
@@ -34,6 +35,7 @@ const App = () => {
             <Route path='/games'><Game /></Route>
             <Route exact path='/login'><Login /></Route>
             <Route exact path='/register'><Register /></Route>
+            <Route exact path='/todo'><ToDo /></Route>
           </Switch>
           </div>
         </Fragment>

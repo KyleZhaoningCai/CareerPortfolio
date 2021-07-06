@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { register  } from '../../actions/userActions';
+import { loadUser, register  } from '../../actions/userActions';
 import { setMessage } from '../../actions/messageActions';
 import MessageBox from '../layout/MessageBox';
 import Preloader from '../layout/Preloader';
 
-const Register = ({ message: {type}, user: {loading, isAuthenticated}, register, setMessage }) => {
+const Register = ({ message: {type}, user: {loading, isAuthenticated}, register, setMessage, loadUser }) => {
 
     const [user, setUser] = useState({
         name: '',
@@ -21,6 +21,9 @@ const Register = ({ message: {type}, user: {loading, isAuthenticated}, register,
     const history = useHistory();
 
     useEffect(() => {
+        if (localStorage.token){
+            loadUser();
+        }
         if (isAuthenticated) {            
             history.push('/todo');
         }
@@ -93,4 +96,4 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
-export default connect(mapStateToProps, {register, setMessage})(Register);
+export default connect(mapStateToProps, {register, setMessage, loadUser})(Register);

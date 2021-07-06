@@ -60,6 +60,9 @@ body {
 .form-label {
   font-size: 1.5rem !important;
 }
+.material-icons.large {
+  font-size: 2.5rem;
+}
 @media only screen and (min-width: 993px) {
   .brand-logo {
     padding-left: 20px !important;
@@ -130,4 +133,15 @@ body {
 .progress {
   margin-top: 2.5rem !important;
   margin-bottom: 2.5rem !important;
+}
+
+/* FormModal */
+.modal {
+  width: 40%;
+}
+
+@media only screen and (max-width: 992px) {
+  .modal {
+    width: 80%;
+  }
 }

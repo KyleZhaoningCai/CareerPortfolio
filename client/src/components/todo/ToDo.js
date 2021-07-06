@@ -1,11 +1,17 @@
-import React from 'react'
+import React, {Fragment} from 'react';
+import AddButton from './AddButton';
+import FormModal from './FormModal';
 
 const ToDo = () => {
     return (
-        <div>
-            todo page
-        </div>
+        <Fragment>
+            <ul class="collection with-header">
+                <li class="collection-header">To Do List</li>
+            </ul>
+            <AddButton />
+            <FormModal />
+        </Fragment>
     )
 }
 
-export const ToDo;
+export default ToDo;

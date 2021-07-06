@@ -3,11 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'; 
 import { setMessage } from '../../actions/messageActions';
-import { login } from '../../actions/userActions';
+import { login, loadUser } from '../../actions/userActions';
 import MessageBox from '../layout/MessageBox';
 import Preloader from '../layout/Preloader';
 
-const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, login }) => {
+const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, loadUser, login }) => {
 
     const [user, setUser] = useState({
         email: '',
@@ -19,6 +19,9 @@ const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, 
     const history = useHistory();
 
     useEffect(() => {
+        if (localStorage.token){
+            loadUser();
+        }
         if (isAuthenticated) {            
             history.push('/todo');
         }
@@ -80,4 +83,4 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
-export default connect(mapStateToProps, {setMessage, login})(Login);
+export default connect(mapStateToProps, {setMessage, login, loadUser})(Login);
