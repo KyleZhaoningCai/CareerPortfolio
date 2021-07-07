@@ -49,4 +49,65 @@ router.post('/', [auth,
     }
 });
 
+// @route       PUT api/todo/:id
+// @desc        Update a todo item
+// @access      Private
+router.put('/:id', auth, async (req, res) => {
+    const {description, priority, date} = req.body;
+
+    const todoFields = {};
+    if (description){
+        todoFields.description = description;
+    }
+    if (priority){
+        todoFields.priority = priority;
+    }
+    if (date){
+        todoFields.date = date;
+    }
+
+    try {
+        let todo = await Todo.findById(req.params.id);
+
+        if (!todo){
+            return res.status(404).json({ msg: 'Contact not found'});
+        }
+
+        if (todo.user.toString() !== req.user.id){
+            return res.status(401).json({ msg: 'Not authorized'});
+        }
+
+        todo = await Todo.findByIdAndUpdate(req.params.id, {$set: todoFields}, {new: true});
+
+        res.json(todo);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route       DELETE api/todo/:id
+// @desc        Delete a todo item
+// @access      Private
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        let todo = await Todo.findById(req.params.id);
+
+        if (!todo){
+            return res.status(404).json({ msg: 'To-do not found'});
+        }
+
+        if (todo.user.toString() !== req.user.id){
+            return res.status(401).json({ msg: 'Not authorized'});
+        }
+
+        await Todo.findByIdAndRemove(req.params.id);
+
+        res.json({ msg: 'To-do removed' });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;

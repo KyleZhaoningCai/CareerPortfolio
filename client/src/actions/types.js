@@ -6,3 +6,7 @@ export const SET_MESSAGE = "SET_MESSAGE";
 export const ADD_TODO = "ADD_TODO";
 export const SET_TODO_LOADING = "SET_TODO_LOADING";
 export const GET_TODOS = "GET_TODOS";
+export const DELETE_TODOS = "DELETE_TODOS";
+export const SET_CURRENT = "SET_CURRENT";
+export const CLEAR_CURRENT = "CLEAR_CURRENT";
+export const UPDATE_TODO = "UPDATE_TODO";
