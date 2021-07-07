@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #b6666f;
-  --background-color: #e4c2c1;
-  --dark-color: #d1a080;
-  --light-color: #fef2f2;
-  --contrast-color: #f53163;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
+  --primary-color: #1f2120;
+  --background-color: #f2f6f5;
+  --dark-color: #7d7d7d;
+  --light-color: #a8a8a8;
+  --contrast-color: #eeaba2;
+  --danger-color: #ec5f6d;
+  --success-color: #5deb7e;
 }
 html {
   font-size: 12px;
@@ -33,12 +33,35 @@ body {
 .btn-primary:hover {
   background-color: var(--primary-color);
 }
+.btn-primary:focus {
+  background-color: var(--dark-color);
+}
+.btn-secondary {
+  background-color: var(--light-color);
+}
+.btn-secondary:hover {
+  background-color: var(--dark-color);
+}
+.btn-secondary:focus {
+  background-color: var(--light-color);
+}
 .form-label {
   font-size: 1.25rem !important;
 }
 .form-field {
   margin-top: 30px;
 }
+.dropdown-content,
+.sidenav {
+  background-color: var(--background-color);
+}
+.dropdown-content li a {
+  color: var(--primary-color);
+}
+blockquote {
+  border-left: 5px solid var(--contrast-color) !important;
+}
+
 /* Navbar CSS */
 .nav-wrapper {
   background-color: var(--background-color);
@@ -192,4 +215,13 @@ body {
 }
 .edit-button {
   margin-right: 5px;
+}
+
+/* MessageBox CSS */
+.danger {
+  color: var(--danger-color) !important;
+}
+
+.success {
+  color: var(--success-color) !important;
 }
