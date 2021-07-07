@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER, GET_USER, SET_LOADING, SET_MESSAGE } from "./types";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, GET_USER, SET_LOADING, SET_MESSAGE } from "./types";
 import axios from 'axios';
 import setAuthToken from '../../src/utils/setAuthToken';
 
@@ -47,6 +47,10 @@ export const login = (user) => async dispatch => {
             payload: {message: error.message, type: "danger"}
         })
     }
+}
+
+export const logout = () => async dispatch => {
+    dispatch({type:LOGOUT_USER});
 }
 
 export const loadUser = () => async dispatch => {

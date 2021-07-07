@@ -1,4 +1,4 @@
-import { GET_USER, LOGIN_USER, REGISTER_USER, SET_LOADING } from "../actions/types";
+import { GET_USER, LOGIN_USER, LOGOUT_USER, REGISTER_USER, SET_LOADING } from "../actions/types";
 const initialState = {
     loading: false,
     isAuthenticated: false,
@@ -21,6 +21,14 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 isAuthenticated: true
+            }
+        case LOGOUT_USER:
+            localStorage.removeItem('token');
+            return{
+                ...state,
+                isAuthenticated: false,
+                loading: false,
+                user: null,
             }
         case SET_LOADING: 
             return {
