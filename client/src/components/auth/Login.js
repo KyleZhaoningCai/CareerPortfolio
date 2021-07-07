@@ -3,11 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'; 
 import { setMessage } from '../../actions/messageActions';
-import { login, loadUser, setLoading } from '../../actions/userActions';
+import { login, loadUser } from '../../actions/userActions';
 import MessageBox from '../layout/MessageBox';
 import Preloader from '../layout/Preloader';
 
-const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, loadUser, setLoading, login }) => {
+const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, loadUser, login }) => {
 
     const [user, setUser] = useState({
         email: '',
@@ -45,7 +45,6 @@ const Login = ({ message: {type}, user: {loading, isAuthenticated}, setMessage, 
         if (email === '' || password === ''){
             setMessage('Please enter all fields', 'danger');
         }else{
-            setLoading();
             login({
                 email,
                 password,
@@ -89,7 +88,6 @@ Login.propTypes = {
     setMessage: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     loadUser: PropTypes.func.isRequired,
-    
 }
 
 const mapStateToProps = state => ({
@@ -97,4 +95,4 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
-export default connect(mapStateToProps, {setMessage, login, loadUser, setLoading})(Login);
+export default connect(mapStateToProps, {setMessage, login, loadUser})(Login);

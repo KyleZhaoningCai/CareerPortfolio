@@ -4,6 +4,7 @@ export const LOGIN_USER_ONCE = "LOGIN_USER_ONCE";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const GET_USER = "GET_USER";
 export const SET_LOADING = "SET_LOADING";
+export const CLEAR_LOADING = "CLEAR_LOADING";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const ADD_TODO = "ADD_TODO";
 export const SET_TODO_LOADING = "SET_TODO_LOADING";

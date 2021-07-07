@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 
-// @route  GET api/user
+// @route  GET api/auth
 // @desc   Get the logged in user
 // @access Private
 router.get('/', auth, async (req, res) => {

@@ -61,6 +61,12 @@ body {
 blockquote {
   border-left: 5px solid var(--contrast-color) !important;
 }
+.progress {
+  background-color: var(--light-color);
+}
+.progress .indeterminate {
+  background-color: var(--contrast-color);
+}
 
 /* Navbar CSS */
 .nav-wrapper {

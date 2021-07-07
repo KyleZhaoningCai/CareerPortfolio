@@ -1,15 +1,16 @@
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, GET_USER, SET_LOADING, SET_MESSAGE, LOGIN_USER_ONCE } from "./types";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, GET_USER, SET_LOADING, SET_MESSAGE, LOGIN_USER_ONCE, CLEAR_LOADING } from "./types";
 import axios from 'axios';
 import setAuthToken from '../../src/utils/setAuthToken';
 
 export const register = (user) => async dispatch => {
-    setLoading();
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
     try {
+        dispatch(setLoading());
+
         const res = await axios.post('/api/user', user, config);
 
         dispatch({
@@ -19,10 +20,29 @@ export const register = (user) => async dispatch => {
 
         loadUser();
     } catch (error) {
-        dispatch({
-            type: SET_MESSAGE,
-            payload: {message: error.message, type: "danger"}
-        })
+        dispatch(clearLoading());
+        if (error.response.data.msg){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.response.data.msg, type: "danger"}
+            });
+        }else if (error.response.data.errors){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.response.data.errors[0].msg, type: "danger"}
+            });
+        }else if (error.message){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.message, type: "danger"}
+            });
+        }else{
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: "Error occurred, try again", type: "danger"}
+            });
+        }
+        
     }
 }
 
@@ -33,7 +53,10 @@ export const login = (user) => async dispatch => {
         }
     }
     try {
+        dispatch(setLoading());
+
         const res = await axios.post('/api/auth', user, config);
+
         if (user.remember){
             dispatch({
                 type: LOGIN_USER,
@@ -47,10 +70,28 @@ export const login = (user) => async dispatch => {
         }  
         loadUser();
     } catch (error) {
-        dispatch({
-            type: SET_MESSAGE,
-            payload: {message: error.response.data.msg, type: "danger"}
-        })
+        dispatch(clearLoading());
+        if (error.response.data.msg){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.response.data.msg, type: "danger"}
+            });
+        }else if (error.response.data.errors){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.response.data.errors[0].msg, type: "danger"}
+            });
+        }else if (error.message){
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: error.message, type: "danger"}
+            });
+        }else{
+            dispatch({
+                type: SET_MESSAGE,
+                payload: {message: "Error occurred, try again", type: "danger"}
+            });
+        }
     }
 }
 
@@ -78,6 +119,14 @@ export const loadUser = () => async dispatch => {
     }
 }
 
-export const setLoading = () => async dispatch => {
-    dispatch({type:SET_LOADING});
+export const setLoading = () => {
+    return {
+        type: SET_LOADING
+    };
+};
+
+export const clearLoading = () => {
+    return {
+        type: CLEAR_LOADING
+    };
 }
