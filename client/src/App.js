@@ -2,6 +2,7 @@ import React, {useEffect, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import "react-datepicker/dist/react-datepicker.css";
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -19,7 +20,7 @@ if (localStorage.token){
   setAuthToken(localStorage.token);
 }
 
-const App = () => {
+const App = (props) => {
   useEffect(() => {
     M.AutoInit();
   });

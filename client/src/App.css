@@ -33,7 +33,12 @@ body {
 .btn-primary:hover {
   background-color: var(--primary-color);
 }
-
+.form-label {
+  font-size: 1.25rem !important;
+}
+.form-field {
+  margin-top: 30px;
+}
 /* Navbar CSS */
 .nav-wrapper {
   background-color: var(--background-color);
@@ -47,7 +52,7 @@ body {
 .brand-logo {
   font-size: 2.5rem !important;
 }
-.dropdown-content {
+#gameDropdown.dropdown-content {
   position: relative;
   top: 0 !important;
 }
@@ -56,9 +61,6 @@ body {
 }
 .sidenav {
   width: 250px;
-}
-.form-label {
-  font-size: 1.5rem !important;
 }
 .material-icons.large {
   font-size: 2.5rem;
@@ -137,11 +139,57 @@ body {
 
 /* FormModal */
 .modal {
-  width: 40%;
+  width: 45%;
+}
+
+.datepicker-modal {
+  top: 0 !important;
+  width: 100%;
+}
+
+.confirm-button {
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+.cancel-button {
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 992px) {
   .modal {
     width: 80%;
   }
+  .datepicker-modal {
+    top: 0 !important;
+    width: 100%;
+  }
+}
+
+/* ToDoItem CSS */
+.todo-list {
+  margin-top: 50px;
+}
+.collection-item {
+  line-height: 30px !important;
+}
+.custom-badge {
+  display: inline-block;
+  color: white;
+  height: 30px;
+  width: 35px;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 10px;
+}
+.high-priority-badge {
+  background-color: red !important;
+}
+.medium-priority-badge {
+  background-color: orange !important;
+}
+.low-priority-badge {
+  background-color: lightgreen !important;
+}
+.edit-button {
+  margin-right: 5px;
 }

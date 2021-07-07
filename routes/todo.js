@@ -7,7 +7,7 @@ const Todo = require('../models/Todo');
 // @route  GET api/todo
 // @desc   Get all todo items
 // @access Private
-router.post('/', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const todos = await Todo.find({ user: req.user.id });
         res.json(todos);
@@ -26,7 +26,6 @@ router.post('/', [auth,
     check('priority', 'Please select a priority')
         .isIn(['High', 'Medium', 'Low'])
 ], async (req, res) => {
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array()});
