@@ -31,7 +31,7 @@ body {
   background-color: var(--dark-color);
 }
 .btn-primary:hover {
-  background-color: var(--primary-color);
+  background-color: var(--contrast-color);
 }
 .btn-primary:focus {
   background-color: var(--dark-color);
@@ -66,6 +66,12 @@ blockquote {
 }
 .progress .indeterminate {
   background-color: var(--contrast-color);
+}
+.react-confirm-alert-body {
+  width: auto;
+}
+.react-confirm-alert-body h1 {
+  font-size: 2rem;
 }
 
 /* Navbar CSS */
@@ -199,30 +205,44 @@ blockquote {
   margin-top: 50px;
 }
 .collection-item {
-  line-height: 30px !important;
+  height: auto;
+  line-height: 50px !important;
+}
+.collection-item span {
+  overflow-wrap: break-word;
 }
 .custom-badge {
   display: inline-block;
   color: white;
-  height: 30px;
   width: 35px;
-  border-radius: 5px;
+  border-radius: 15px;
   text-align: center;
   margin-right: 10px;
 }
 .high-priority-badge {
-  background-color: red !important;
+  background-color: var(--contrast-color) !important;
 }
 .medium-priority-badge {
-  background-color: orange !important;
+  background-color: var(--dark-color) !important;
 }
 .low-priority-badge {
-  background-color: lightgreen !important;
+  background-color: var(--light-color) !important;
 }
 .edit-button {
   margin-right: 5px;
+  border-radius: 15px;
+}
+.delete-button {
+  border-radius: 15px;
+}
+.date-text {
+  color: var(--contrast-color);
 }
 
+/* ToDo CSS */
+.collection-header.row {
+  margin-bottom: 0;
+}
 /* MessageBox CSS */
 .danger {
   color: var(--danger-color) !important;

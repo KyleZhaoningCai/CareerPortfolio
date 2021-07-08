@@ -9,28 +9,37 @@ import PropTypes from 'prop-types';
 import ToDoItem from './ToDoItem';
 import Logout from '../auth/Logout';
 import { loadUser } from '../../actions/userActions';
+import Preloader from '../layout/Preloader';
 
-const ToDo = ({todo: {loading, todos, current}, user: {isAuthenticated}, getTodos, loadUser}) => {
+const ToDo = ({todo: {loading, todos}, user: {isAuthenticated}, getTodos, loadUser}) => {
     const history = useHistory();
     useEffect(() => {
-        if (localStorage.token){
-            loadUser();
-        }
-        if (!isAuthenticated) {            
-            history.push('/login');
-        }else{
-            // Intialize Materialize components after history push
-            M.AutoInit();
-            getTodos();
-        }        
-    }, []);
+        (async function anyNameFunction() {
+            if (localStorage.token || sessionStorage.token){
+                await loadUser();
+            }
+            if (!isAuthenticated) {           
+                history.push('/login');
+            }else{
+                // Intialize Materialize components after history push
+                M.AutoInit();
+                getTodos();
+            }        
+        })();
+    }, [isAuthenticated]);
+    let todoList = null;
+    if (todos !== null && todos.length > 0){
+        todoList = todos.map(todo => (<ToDoItem key={todo._id} todo={todo} />))
+    }else if (loading){
+        todoList = <Preloader />
+    }else{
+        todoList = <li className="collection-item">There is nothing to-do!</li>
+    }
     return (
         <div className="todo-list">
             <ul className="collection with-header">
-                <li className="collection-header"><h3>To-do List <span className="secondary-content"><Logout /></span></h3></li>
-                { (todos !== null && todos.length > 0) ? todos.map(todo => (<ToDoItem key={todo._id} todo={todo} />)) : (
-                    <li className="collection-item">There is nothing to-do!</li>
-                )}
+                <li className="collection-header row"><h3>To-do List <span className="secondary-content"><Logout /></span></h3></li>
+                {todoList}
             </ul>
             <AddButton />
             <FormModal />

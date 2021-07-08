@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Logout = ({logout}) => {
     return (
         <Fragment>
-            <button type="button" className="btn" onClick={logout}>Logout</button>
+            <button type="button" className="btn btn-primary" onClick={logout}>Logout</button>
         </Fragment>
     )
 }

@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODOS, GET_TODOS, SET_TODO_LOADING, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO } from "../actions/types";
+import { ADD_TODO, DELETE_TODOS, GET_TODOS, SET_TODO_LOADING, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO, CLEAR_TODO_LOADING, RESET_TODOS } from "../actions/types";
 
 const initialState = {
     loading: false,
@@ -42,10 +42,21 @@ export default (state = initialState, action) => {
                 ...state,
                 current: null
             }
+        case RESET_TODOS: 
+            return {
+                loading: false,
+                todos: [],
+                current: null
+            }
         case SET_TODO_LOADING: 
             return {
                 ...state,
                 loading: true
+            }
+        case CLEAR_TODO_LOADING: 
+            return {
+                ...state,
+                loading: false
             }
         default:
             return state;

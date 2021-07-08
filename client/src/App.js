@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import "react-datepicker/dist/react-datepicker.css";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';

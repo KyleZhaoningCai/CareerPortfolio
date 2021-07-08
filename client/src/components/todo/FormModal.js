@@ -8,11 +8,11 @@ import { addTodo, updateTodo } from '../../actions/todoActions';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
 
-const FormModal = ({message:{ type }, todo: {current}, setMessage, addTodo, updateTodo}) => {
+const FormModal = ({message:{ type }, todo: {current, loading, todos}, setMessage, addTodo, updateTodo}) => {
 
     useEffect(() => {
         if (current !== null){
-            const currentDate = ((current.date === null || current.date === "") ? null : moment(current.date, "DD-MM-YYYY").toDate());
+            const currentDate = ((current.date === null || current.date === "") ? null : moment(current.date, "YYYY-MM-DD").toDate());
             setThisTodo({
                 description: current.description,
                 priority: current.priority,
@@ -48,13 +48,20 @@ const FormModal = ({message:{ type }, todo: {current}, setMessage, addTodo, upda
     const onSubmit = e => {
         e.preventDefault();
         if (description === '' || (priority !== 'High' && priority !== 'Medium' && priority !== 'Low')){
-            setMessage('Please enter all fields', 'danger');
-        }else{
+            setMessage('Please enter a description and select a priority', 'danger');
+        }else if (todos.length > 20){
+            setMessage('You can only have a maximum of 20 to-dos', 'danger');
+        }else {
             if (current === null){
                 addTodo({
                     description,
                     priority,
                     date
+                });
+                setThisTodo({
+                    description: '',
+                    priority: 'Low',
+                    date: null
                 });
             }else{
                 updateTodo({
@@ -89,9 +96,11 @@ const FormModal = ({message:{ type }, todo: {current}, setMessage, addTodo, upda
                         <label htmlFor="date" className='form-label'>Complete By (Optional)</label><br />
                         <DatePicker dateFormat="dd/MM/yyyy" selected={date} onChange={(selectedDate => setThisTodo({...thisTodo, date: selectedDate}))} />
                     </div>                    
-                    {false ? <Preloader /> : <MessageBox />} 
-                    <button type='submit' className='btn btn-primary confirm-button'>{current === null ? "Confirm" : "Update"}</button>
-                    <button type='button' className="modal-close cancel-button btn">Cancel</button>
+                    {loading ? <Preloader /> : <MessageBox />} 
+                    {loading ? <button type='submit' className='btn btn-primary confirm-button' disabled>{current === null ? "Confirm" : "Update"}</button>:
+                    <button type='submit' className='btn btn-primary confirm-button'>{current === null ? "Confirm" : "Update"}</button>}
+                    {loading ? <button type='button' className="modal-close btn-secondary cancel-button btn" disabled>Cancel</button>:
+                    <button type='button' className="modal-close btn-secondary cancel-button btn">Cancel</button>}                    
                 </form>
             </div>
         </div>

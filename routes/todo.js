@@ -9,7 +9,7 @@ const Todo = require('../models/Todo');
 // @access Private
 router.get('/', auth, async (req, res) => {
     try {
-        const todos = await Todo.find({ user: req.user.id });
+        const todos = await Todo.find({ user: req.user.id }).sort({date: 'asc'});
         res.json(todos);
     } catch (error) {
         console.error(error.message);
@@ -23,6 +23,8 @@ router.get('/', auth, async (req, res) => {
 router.post('/', [auth,
     check('description', 'Please add a to do description')
         .notEmpty(),
+    check('description', 'Description cannot be longer than 255 characters')
+        .isLength({min: 1, max:255}),
     check('priority', 'Please select a priority')
         .isIn(['High', 'Medium', 'Low'])
 ], async (req, res) => {
