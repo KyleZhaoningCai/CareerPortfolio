@@ -1,4 +1,4 @@
 {
     "mongoURI" : "mongodb+srv://KyleZhaoningCai:KyleZhaoningCai1992@careerportfolio.mwvon.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret": "secret"
+    "jwtSecret": "D897erd7984Dv15"
 }
